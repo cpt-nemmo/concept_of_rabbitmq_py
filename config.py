@@ -5,7 +5,7 @@ RMQ_PORT = 5672
 RMQ_USER = 'guest'
 RMQ_PASSWORD = 'guest'
 MQ_EXCHANGE = ''
-MQ_ROUTING_KEY = 'news'
+MQ_ROUTING_KEY = 'Hello'
 
 conn_params = pika.ConnectionParameters(
     host=RMQ_HOST,

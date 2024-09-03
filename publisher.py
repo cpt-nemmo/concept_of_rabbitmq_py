@@ -1,3 +1,4 @@
+import json
 from typing import TYPE_CHECKING
 
 from config import (
@@ -10,13 +11,18 @@ from config import (
 if TYPE_CHECKING:
     from pika.adapters.blocking_connection import BlockingChannel
 
+data = {
+    "to": "ysfedoseev@yandex.ru",
+    "key": "1234"
+}
+
 
 def produce_message(channel: "BlockingChannel") -> None:
     queue = channel.queue_declare(queue=MQ_ROUTING_KEY)
     channel.basic_publish(
         exchange=MQ_EXCHANGE,
         routing_key=MQ_ROUTING_KEY,
-        body=b"Hello World!",
+        body=json.dumps(data).encode('UTF-8'),
     )
 
 
